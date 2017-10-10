@@ -1,7 +1,5 @@
-# Basic tutorials
-Some basic Linux administration tutorials
-
-We will go through some basic but useful tasks, which can help you in your daily system administration.
+# Random useful Linux commands
+Some random (but useful) Linux commands
 
 **Show which kernel modules are currenly loaded**
 
