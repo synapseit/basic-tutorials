@@ -1,7 +1,8 @@
 # Random useful Linux commands
-The purpose of this page is to provide you with a list of commands that can - at some point - be useful for any specific task you are working on. 
+The purpose of this page is to provide you with a list of commands that can - at some point - be useful for any specific task you are working on.  
 The list is, on purpose, unordered and no specific pattern or theme is followed.
 
+## 1. Manage kernel modules
 **Show which kernel modules are currenly loaded**
 
 Use this command to view a list of all modules which are currently loaded.
@@ -28,6 +29,7 @@ To unload a module, use the -r option, as in the following example:
 modprobe -r vmhgfs
 ```
 
+## 2. Manage environment variables
 **View all environment variables**
 
 Use this command to check if an environment variable is set:
@@ -72,7 +74,9 @@ For example, to stop using the HTTP and HTTPS proxy we set above:
 unset http_proxy
 unset https_proxy
 ```
-**View the exit code of the last executed command**
+
+## 3. Check return codes
+**View the return code of the last executed command**
 
 This is useful when you are not sure if the return code of a program you executed was what you expected. A value of **0** usually means success:
 
@@ -80,6 +84,7 @@ This is useful when you are not sure if the return code of a program you execute
 echo $?
 ```
 
+## 4. Create random data
 **Generate random words and data**
 
 To generate random string of a specific length, you can read from the virtual /dev/urandom device, and format/truncate the data at a specific length. You then use the head command to limit the number of strings/data you want:
