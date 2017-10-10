@@ -1,5 +1,6 @@
 # Basic tutorials
 Some basic Linux administration tutorials
+
 We will go through some basic but useful tasks, which can help you in your daily system administration.
 
 **Show which kernel modules are currenly loaded**
@@ -46,6 +47,7 @@ env | grep JAVA_HOME
 **Set an environment variables**
 
 You can set an environment variable using the export command, however this is only relevant to a specific terminal session.
+
 If you want a variable to be available across different logins, you should edit your .bash_profile or .bashrc file (depending on the specific session - see [this link](https://apple.stackexchange.com/questions/51036/what-is-the-difference-between-bash-profile-and-bashrc) to understand the difference:
 
 ```
