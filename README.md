@@ -80,3 +80,37 @@ This is useful when you are not sure if the return code of a program you execute
 ```
 echo $?
 ```
+
+**Generate random words and data**
+
+To generate random string of a specific length, you can use the virtual /dev/urandom device, and format/truncate the data at a specific length. We then use the head command to limit the number of strings/data we are interested in:
+
+For example, generate 20 alphanumeric passwords of length 8:
+
+```
+cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 8 | head -n 20
+```
+
+Generate 10 alphanumeric passwords of length 8, including chars # ? !
+
+```
+cat /dev/urandom | tr -dc 'a-zA-Z0-9!?#' | fold -w 8 | head -n 10
+```
+
+Generate 5 uppercase-only alphanumeric passwords of length 8, including chars # ? !
+
+```
+cat /dev/urandom | tr -dc 'A-Z0-9!?#' | fold -w 8 | head -n 5
+```
+
+Generate 20 lowercase-only passwords of length 8, including chars # ? !
+
+```
+cat /dev/urandom | tr -dc 'A-Z0-9!?#' | fold -w 8 | head -n 20
+```
+
+Generate 10 numbers-only strings of length 8
+
+```
+cat /dev/urandom | tr -dc '0-9' | fold -w 8 | head -n 10
+```
