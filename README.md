@@ -106,7 +106,7 @@ cat /dev/urandom | tr -dc 'A-Z0-9!?#' | fold -w 8 | head -n 5
 Generate 20 lowercase-only passwords of length 8, including chars # ? !
 
 ```
-cat /dev/urandom | tr -dc 'A-Z0-9!?#' | fold -w 8 | head -n 20
+cat /dev/urandom | tr -dc 'a-z0-9!?#' | fold -w 8 | head -n 20
 ```
 
 Generate 10 numeric-only strings of length 8
