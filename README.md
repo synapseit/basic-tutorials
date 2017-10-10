@@ -44,11 +44,11 @@ env | grep JAVA_HOME
 ```
 
 
-**Set an environment variables**
+**Set (and unset) an environment variables**
 
-You can set an environment variable using the export command, however this is only relevant to a specific terminal session.
+You can set (called "export") an environment variable using the export command, however this is only relevant to a specific terminal session.
 
-If you want a variable to be available across different logins, you should edit your .bash_profile or .bashrc file (depending on the specific session - see [this link](https://apple.stackexchange.com/questions/51036/what-is-the-difference-between-bash-profile-and-bashrc) to understand the difference:
+If you want a variable to be available across different logins, you should add the below command at the end of you your .bash_profile or .bashrc file (depending on the specific session - see [this link](https://apple.stackexchange.com/questions/51036/what-is-the-difference-between-bash-profile-and-bashrc) to understand the difference):
 
 ```
 export VARNAME
@@ -59,4 +59,24 @@ For example, to use a HTTP and HTTPS proxy:
 ```
 export http_proxy=http://192.168.1.30:8080
 export https_proxy=http://192.168.1.30:8080
+```
+
+If you want to unset a variable, you can use the following command (keeping in mind that is also only valid for the specific terminal session you are using - see above for a persistent solution):
+
+```
+unset VARNAME
+```
+
+For example, to stop using the HTTP and HTTPS proxy we set above:
+
+```
+unset http_proxy
+unset https_proxy
+```
+**View the exit code of the last executed command**
+
+This is useful when you are not sure if the return code of a program you executed was what you expected. A value of **0** usually means success:
+
+```
+echo $?
 ```
