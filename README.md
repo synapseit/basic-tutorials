@@ -1,6 +1,6 @@
 # Random useful Linux commands
 The purpose of this page is to provide you with a list of commands that can - at some point - be useful for any specific task you are working on. 
-The list is, on purpose, unordered and no specific pattern of theme is followed:
+The list is, on purpose, unordered and no specific pattern of theme is followed.
 
 **Show which kernel modules are currenly loaded**
 
