@@ -83,7 +83,7 @@ echo $?
 
 **Generate random words and data**
 
-To generate random string of a specific length, you can use the virtual /dev/urandom device, and format/truncate the data at a specific length. We then use the head command to limit the number of strings/data we are interested in:
+To generate random string of a specific length, you can read from the virtual /dev/urandom device, and format/truncate the data at a specific length. You then use the head command to limit the number of strings/data you want:
 
 For example, generate 20 alphanumeric passwords of length 8:
 
@@ -109,7 +109,7 @@ Generate 20 lowercase-only passwords of length 8, including chars # ? !
 cat /dev/urandom | tr -dc 'A-Z0-9!?#' | fold -w 8 | head -n 20
 ```
 
-Generate 10 numbers-only strings of length 8
+Generate 10 numeric-only strings of length 8
 
 ```
 cat /dev/urandom | tr -dc '0-9' | fold -w 8 | head -n 10
