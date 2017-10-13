@@ -128,3 +128,38 @@ For example, let's copy 1000 blocks of 1 MB random data to file /home/user/filen
 ```
 dd if=/dev/urandom of=/home/user/filename bs=1M count=1000
 ```
+
+## 5. View processes
+
+There are many ways to view the active/current processes, we give examples for htop and ps.  
+
+**htop**
+
+htop is more a process manager than just a process viewer. To start it, just run (install it first via apt-get or dnf/yum if needed):
+
+```
+htop
+```
+
+htop offers many features, the most important ones can be accessed by pressing:
+
+**F4**: filter
+**F5**: sort or tree view
+**F9**: kill a process
+
+Exit with **F10**.
+
+**ps**
+
+ps is a very powerful tool, you can use the following to get a complete view:
+
+```
+ps -ef
+```
+
+To use a tree-like view:
+
+```
+ps auxf
+```
+
