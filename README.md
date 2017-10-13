@@ -167,7 +167,7 @@ A very reliable way to change timezone is by creating a symlink - this involves 
 
 **Step 1. Find the correct timezone**:
 
-Explore which timezone are available, and find the correct one for you. In the below example we check the European timezone:
+Explore which timezone are available, and find the correct one for you. In the below example we check the European timezone list:
 
 ```
 cd /usr/share/zoneinfo/Europe/
