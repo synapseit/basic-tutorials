@@ -174,7 +174,15 @@ cd /usr/share/zoneinfo/Europe/
 ls -l
 ```
 
-You will get a list of files - each representing a city/timezone. We choose Warsaw timezone.
+You will get a list of files - each file represents a city/timezone. In this example, we want to change to Warsaw timezone, and we notice that a file named **Warsaw** exists in the complete list:
+
+```
+Amsterdam  Belgrade    Budapest    Gibraltar    Jersey       Ljubljana   Mariehamn  Oslo       Rome        Simferopol  Tirane     Vatican    Zagreb
+Andorra    Berlin      Busingen    Guernsey     Kaliningrad  London      Minsk      Paris      Samara      Skopje      Tiraspol   Vienna     Zaporozhye
+Astrakhan  Bratislava  Chisinau    Helsinki     Kiev         Luxembourg  Monaco     Podgorica  San_Marino  Sofia       Ulyanovsk  Vilnius    Zurich
+Athens     Brussels    Copenhagen  Isle_of_Man  Kirov        Madrid      Moscow     Prague     Sarajevo    Stockholm   Uzhgorod   Volgograd
+Belfast    Bucharest   Dublin      Istanbul     Lisbon       Malta       Nicosia    Riga       Saratov     Tallinn     Vaduz      **Warsaw**
+```
 
 **Step 2. Link the correct timezone to /etc/localtime**:
 
