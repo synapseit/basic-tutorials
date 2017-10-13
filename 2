@@ -119,10 +119,9 @@ Generate 10 numeric-only strings of length 8
 cat /dev/urandom | tr -dc '0-9' | fold -w 8 | head -n 10
 ```
 
-**Generate a file full of random data**
+**Generate a file full of random (non-sense) data**
 
-To generate a file full of random data you can still use /dev/urandom, combined with dd which will then copy to the file you want. You need to specify block size (i.e. how much data you copy from /dev/urandom) and the number of blocks to copy.  
-
+To generate a file full of random data you can still use /dev/urandom, combined with dd which will then copy to the file you want. You need to specify block size (i.e. how much data you copy from /dev/urandom) and the number of blocks to copy.
 For example, let's copy 1000 blocks of 1 MB random data to file /home/user/filename:
 
 ```
