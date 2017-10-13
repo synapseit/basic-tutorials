@@ -143,11 +143,10 @@ htop
 
 htop offers many features, the most important ones can be accessed by pressing:
 
-**F4**: filter
-**F5**: sort or tree view
-**F9**: kill a process
-
-Exit with **F10**.
+* **F4**: filter
+* **F5**: sort or tree view
+* **F9**: kill a process
+* **F10**: exit htop
 
 **ps**
 
