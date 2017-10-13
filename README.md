@@ -174,14 +174,74 @@ cd /usr/share/zoneinfo/Europe/
 ls -l
 ```
 
-You will get a list of files - each file represents a city/timezone. In this example, we want to change to Warsaw timezone, and we notice that a file named **Warsaw** exists in the complete list:
+You will get a list of files - each file represents a city/timezone. In this example, we want to change to Warsaw timezone, and we notice that a file named **Warsaw** exists in folder /usr/share/zoneinfo/Europe:
 
 ```
-Amsterdam  Belgrade    Budapest    Gibraltar    Jersey       Ljubljana   Mariehamn  Oslo       Rome        Simferopol  Tirane     Vatican    Zagreb
-Andorra    Berlin      Busingen    Guernsey     Kaliningrad  London      Minsk      Paris      Samara      Skopje      Tiraspol   Vienna     Zaporozhye
-Astrakhan  Bratislava  Chisinau    Helsinki     Kiev         Luxembourg  Monaco     Podgorica  San_Marino  Sofia       Ulyanovsk  Vilnius    Zurich
-Athens     Brussels    Copenhagen  Isle_of_Man  Kirov        Madrid      Moscow     Prague     Sarajevo    Stockholm   Uzhgorod   Volgograd
-Belfast    Bucharest   Dublin      Istanbul     Lisbon       Malta       Nicosia    Riga       Saratov     Tallinn     Vaduz      **Warsaw**
+usr@notebook [/usr/share/zoneinfo/Europe] ls -l
+total 252
+-rw-r--r--. 1 root root 2949 28 mar  2017 Amsterdam
+-rw-r--r--. 1 root root 1751 28 mar  2017 Andorra
+-rw-r--r--. 1 root root 1183 28 mar  2017 Astrakhan
+-rw-r--r--. 1 root root 2271 28 mar  2017 Athens
+-rw-r--r--. 7 root root 3687 28 mar  2017 Belfast
+-rw-r--r--. 6 root root 1957 28 mar  2017 Belgrade
+-rw-r--r--. 1 root root 2335 28 mar  2017 Berlin
+-rw-r--r--. 2 root root 2272 28 mar  2017 Bratislava
+-rw-r--r--. 1 root root 2970 28 mar  2017 Brussels
+-rw-r--r--. 1 root root 2221 28 mar  2017 Bucharest
+-rw-r--r--. 1 root root 2405 28 mar  2017 Budapest
+-rw-r--r--. 3 root root 1918 28 mar  2017 Busingen
+-rw-r--r--. 2 root root 2445 28 mar  2017 Chisinau
+-rw-r--r--. 1 root root 2160 28 mar  2017 Copenhagen
+-rw-r--r--. 2 root root 3559 28 mar  2017 Dublin
+-rw-r--r--. 1 root root 3061 28 mar  2017 Gibraltar
+-rw-r--r--. 7 root root 3687 28 mar  2017 Guernsey
+-rw-r--r--. 2 root root 1909 28 mar  2017 Helsinki
+-rw-r--r--. 7 root root 3687 28 mar  2017 Isle_of_Man
+-rw-r--r--. 3 root root 2152 28 mar  2017 Istanbul
+-rw-r--r--. 7 root root 3687 28 mar  2017 Jersey
+-rw-r--r--. 1 root root 1518 28 mar  2017 Kaliningrad
+-rw-r--r--. 1 root root 2097 28 mar  2017 Kiev
+-rw-r--r--. 1 root root 1153 28 mar  2017 Kirov
+-rw-r--r--. 2 root root 3453 28 mar  2017 Lisbon
+-rw-r--r--. 6 root root 1957 28 mar  2017 Ljubljana
+-rw-r--r--. 7 root root 3687 28 mar  2017 London
+-rw-r--r--. 1 root root 2974 28 mar  2017 Luxembourg
+-rw-r--r--. 1 root root 2637 28 mar  2017 Madrid
+-rw-r--r--. 1 root root 2629 28 mar  2017 Malta
+-rw-r--r--. 2 root root 1909 28 mar  2017 Mariehamn
+-rw-r--r--. 1 root root 1356 28 mar  2017 Minsk
+-rw-r--r--. 1 root root 2953 28 mar  2017 Monaco
+-rw-r--r--. 2 root root 1544 28 mar  2017 Moscow
+-rw-r--r--. 2 root root 2016 28 mar  2017 Nicosia
+-rw-r--r--. 3 root root 2251 28 mar  2017 Oslo
+-rw-r--r--. 1 root root 2971 28 mar  2017 Paris
+-rw-r--r--. 6 root root 1957 28 mar  2017 Podgorica
+-rw-r--r--. 2 root root 2272 28 mar  2017 Prague
+-rw-r--r--. 1 root root 2235 28 mar  2017 Riga
+-rw-r--r--. 3 root root 2692 28 mar  2017 Rome
+-rw-r--r--. 1 root root 1239 28 mar  2017 Samara
+-rw-r--r--. 3 root root 2692 28 mar  2017 San_Marino
+-rw-r--r--. 6 root root 1957 28 mar  2017 Sarajevo
+-rw-r--r--. 1 root root 1183 28 mar  2017 Saratov
+-rw-r--r--. 1 root root 1490 28 mar  2017 Simferopol
+-rw-r--r--. 6 root root 1957 28 mar  2017 Skopje
+-rw-r--r--. 1 root root 2130 28 mar  2017 Sofia
+-rw-r--r--. 1 root root 1918 28 mar  2017 Stockholm
+-rw-r--r--. 1 root root 2187 28 mar  2017 Tallinn
+-rw-r--r--. 1 root root 2098 28 mar  2017 Tirane
+-rw-r--r--. 2 root root 2445 28 mar  2017 Tiraspol
+-rw-r--r--. 1 root root 1267 28 mar  2017 Ulyanovsk
+-rw-r--r--. 1 root root 2103 28 mar  2017 Uzhgorod
+-rw-r--r--. 3 root root 1918 28 mar  2017 Vaduz
+-rw-r--r--. 3 root root 2692 28 mar  2017 Vatican
+-rw-r--r--. 1 root root 2237 28 mar  2017 Vienna
+-rw-r--r--. 1 root root 2199 28 mar  2017 Vilnius
+-rw-r--r--. 1 root root 1153 28 mar  2017 Volgograd
+-rw-r--r--. 2 root root 2705 28 mar  2017 Warsaw
+-rw-r--r--. 6 root root 1957 28 mar  2017 Zagreb
+-rw-r--r--. 1 root root 2115 28 mar  2017 Zaporozhye
+-rw-r--r--. 3 root root 1918 28 mar  2017 Zurich
 ```
 
 **Step 2. Link the correct timezone to /etc/localtime**:
