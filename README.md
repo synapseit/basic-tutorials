@@ -161,4 +161,23 @@ To use a tree-like view:
 ```
 ps auxf
 ```
+## 6. Change timezone
 
+A very reliable way to change timezone is by creating a symlink - this involves the correct timezone file and the /etc/localtime. 
+
+**Step 1. Find the correct timezone**:
+
+Explore which timezone are available, and find the correct one for you. In the below example we check the European timezone:
+
+```
+cd /usr/share/zoneinfo/Europe/
+ls -l
+```
+
+You will get a list of files - each representing a city/timezone. We choose Warsaw timezone.
+
+**Step 2. Link the correct timezone to /etc/localtime**:
+
+```
+ln -s /etc/localtime /usr/share/zoneinfo/Europe/Warsaw
+```
