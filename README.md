@@ -249,3 +249,35 @@ total 252
 ```
 ln -s /etc/localtime /usr/share/zoneinfo/Europe/Warsaw
 ```
+
+## 7. Change hostname
+
+A very easy way to change hostnames is by using the hostnamectl command, which also allows to view what the current configuration is.
+
+**Step 1. View the current hostname configuration**:
+
+```
+hostname ctl
+```
+
+This will show something like this:
+
+```
+usr@notebook [~] hostnamectl
+   Static hostname: notebook
+         Icon name: computer-laptop
+           Chassis: laptop
+        Machine ID: ard4070e15fe4d059fe493bfe14e8285
+           Boot ID: 8efd3b6a96c0ef7fa65e02aef8c485aa
+  Operating System: Fedora 26 (Twenty Six)
+       CPE OS Name: cpe:/o:fedoraproject:fedora:26
+            Kernel: Linux 4.12.13-300.fc26.x86_64
+      Architecture: x86-64
+```
+
+**Step 2. Change the hostname**:
+
+```
+hostnamectl set-hostname MY_NEW_HOSTNAME
+```
+
