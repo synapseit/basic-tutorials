@@ -257,7 +257,7 @@ A very easy way to change hostnames is by using the hostnamectl command, which a
 **Step 1. View the current hostname configuration**:
 
 ```
-hostname ctl
+hostnamectl
 ```
 
 This will show something like this:
