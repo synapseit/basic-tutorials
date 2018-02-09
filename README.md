@@ -303,3 +303,28 @@ File example:
 curl -o output.zip http://url.com/output.zip
 ```
 
+**Call an URL and inspect HTTP response header info**
+```
+curl -I https://www.google.com
+
+HTTP/1.1 302 Found
+Cache-Control: private
+Content-Type: text/html; charset=UTF-8
+Referrer-Policy: no-referrer
+Location: https://www.google.it/?gfe_rd=cr&dcr=0&ei=BBl-WrDZBe_BXq23vpgC
+Content-Length: 267
+Date: Fri, 09 Feb 2018 21:56:20 GMT
+```
+
+**List contents of a FTP folder**
+```
+curl ftp://ftp.test.com --user username:password
+```
+
+
+**Download a file via FTP**
+
+```
+curl ftp://ftp.test.com/myfile.zip --user username:password
+```
+
