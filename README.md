@@ -11,7 +11,7 @@ Use this command to view a list of all modules which are currently loaded.
 lsmod
 ```
 
-**Load and unload kernel modules** 
+**Load and unload kernel modules**
 
 ```
 modprobe name_of_module
@@ -163,7 +163,7 @@ ps auxf
 ```
 ## 6. Change timezone
 
-A very reliable way to change timezone is by creating a symlink - this involves the correct timezone file and the /etc/localtime. 
+A very reliable way to change timezone is by creating a symlink - this involves the correct timezone file and the /etc/localtime.
 
 **Step 1. Find the correct timezone**:
 
@@ -279,5 +279,27 @@ usr@notebook [~] hostnamectl
 
 ```
 hostnamectl set-hostname MY_NEW_HOSTNAME
+```
+
+test
+
+## 8. Call an URL
+
+While there are many ways to call an url and check the resulting HTTP status code, ``curl`` provides the maximum flexibility with the easiest commands.
+
+**Call an URL and display the resulting html**
+
+```
+curl google.com
+```
+
+**Call an URL and save the output to a file (this also works with files)**
+```
+curl -o FILENAME.html google.com
+```
+
+File example:
+```
+curl -o output.zip http://url.com/output.zip
 ```
 
