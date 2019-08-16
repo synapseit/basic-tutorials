@@ -328,3 +328,12 @@ curl ftp://ftp.test.com --user username:password
 curl ftp://ftp.test.com/myfile.zip --user username:password
 ```
 
+## 9. Randomness
+
+
+**Find process names and PIDs which are using your swap memory via the proc FS**
+
+```
+find /proc -maxdepth 2 -path "/proc/[0-9]*/status" -readable -exec awk -v FS=":" '{process[$1]=$2;sub(/^[ \t]+/,"",process[$1]);} END {if(process["VmSwap"] && process[
+"VmSwap"] != "0 kB") printf "%10s %-30s %20s\n",process["Pid"],process["Name"],process["VmSwap"]}' '{}' \;|sort -h -k3,3 
+```
