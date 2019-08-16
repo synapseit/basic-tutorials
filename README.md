@@ -29,6 +29,13 @@ To unload a module, use the -r option, as in the following example:
 modprobe -r vmhgfs
 ```
 
+To view detailed some info about a module use modinfo:
+
+```
+modinfo vmhgfs
+```
+
+
 ## 2. Manage environment variables
 **View all environment variables**
 
@@ -177,7 +184,7 @@ ls -l
 You will get a list of files - each file represents a city/timezone. In this example, we want to change to Warsaw timezone, and we notice that a file named **Warsaw** exists in folder /usr/share/zoneinfo/Europe:
 
 ```
-usr@notebook [/usr/share/zoneinfo/Europe] ls -l
+ls -l
 total 252
 -rw-r--r--. 1 root root 2949 28 mar  2017 Amsterdam
 -rw-r--r--. 1 root root 1751 28 mar  2017 Andorra
@@ -263,7 +270,7 @@ hostnamectl
 This will show something like this:
 
 ```
-usr@notebook [~] hostnamectl
+hostnamectl
    Static hostname: notebook
          Icon name: computer-laptop
            Chassis: laptop
@@ -336,4 +343,88 @@ curl ftp://ftp.test.com/myfile.zip --user username:password
 ```
 find /proc -maxdepth 2 -path "/proc/[0-9]*/status" -readable -exec awk -v FS=":" '{process[$1]=$2;sub(/^[ \t]+/,"",process[$1]);} END {if(process["VmSwap"] && process[
 "VmSwap"] != "0 kB") printf "%10s %-30s %20s\n",process["Pid"],process["Name"],process["VmSwap"]}' '{}' \;|sort -h -k3,3 
+```
+
+**Set SMP Affinity for a peripheral**
+
+Since individual devices do not normally get an IRQ, but controllers do and each controller has its own hub as its first device, to set the SMP affinity for our device we will need to:
+
+* find out which bus we need to work on (with lsusb)
+* find out the iSerial of the hub associated with the relevant bus (with lsusb)
+* find out the IRQ associated with the hub (with lspci)
+* set the smp affinity by using the /proc fs
+
+With the USB device unplugged, run lsusb to list all USB controllers and peripherals:
+
+```
+lsusb
+Bus 001 Device 003: ID 0424:2514 Standard Microsystems Corp. USB 2.0 Hub
+Bus 001 Device 002: ID 8087:8000 Intel Corp. 
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 002 Device 002: ID 0c45:64d0 Microdia 
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+
+```
+Now plug the USB device in and rerun lsusb.
+
+```
+lsusb
+Bus 001 Device 003: ID 0424:2514 Standard Microsystems Corp. USB 2.0 Hub
+Bus 001 Device 002: ID 8087:8000 Intel Corp. 
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+***Bus 003 Device 009: ID 0951:1666 Kingston Technology DataTraveler G4***
+Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 002 Device 002: ID 0c45:64d0 Microdia 
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+
+```
+As you can see, there is a new line in there. Let's now find out the iSerial of the first device of the relevant bus, as we need to prioritize the IRQ associated with that.
+In our example, the reference bus is "Bus 003", so we will be looking for info about Bus 003, Device 001 with lsusb -v
+
+```
+lsusb -v|less
+[...]
+Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Device Descriptor:
+  bLength                18
+  bDescriptorType         1
+  bcdUSB               3.00
+  bDeviceClass            9 Hub
+  bDeviceSubClass         0 Unused
+  bDeviceProtocol         3 
+  bMaxPacketSize0         9
+  idVendor           0x1d6b Linux Foundation
+  idProduct          0x0003 3.0 root hub
+  bcdDevice            4.15
+  iManufacturer           3 Linux 4.15.0-51-generic xhci-hcd
+  iProduct                2 xHCI Host Controller
+  ***iSerial                 1 0000:00:14.0***
+[...]
+```
+
+Let's now turn to lspci -v. The IRQ number is under the "Flags" section of the relevant controller.
+In our example, we are looking for the iSerial "00:14.0":
+
+```
+lspci -v|less
+[...]
+**00:14.0** USB controller: Intel Corporation 8 Series USB xHCI HC (rev 04) (prog-if 30 [XHCI])
+	Subsystem: Dell 8 Series USB xHCI HC
+	Flags: bus master, medium devsel, latency 0, **IRQ 42**
+	Memory at f7c20000 (64-bit, non-prefetchable) [size=64K]
+	Capabilities: [70] Power Management version 2
+	Capabilities: [80] MSI: Enable+ Count=1/8 Maskable- 64bit+
+	Kernel driver in use: xhci_hcd
+[...]
+``` 
+
+In our example, the IRQ is "42".
+Let's now finally set the SMP affinity to CPU0 on IRQ "42":
+
+```
+echo 1 >  /proc/irq/42/smp_affinity
+cat /proc/irq/42/smp_affinity
+1
+
 ```
