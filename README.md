@@ -337,6 +337,22 @@ curl ftp://ftp.test.com/myfile.zip --user username:password
 
 ## 9. Randomness
 
+**Java Keystore commands**
+
+Check a stand-alone certificate
+```keytool -printcert -v -file mycertificate.crt```
+
+Check which certificates are in a Java keystore
+```keytool -list -v -keystore keystore.jks```
+
+Export a certificate from a keystore
+```keytool -export -alias mydomain -file mydomain.crt -keystore keystore.jks```
+
+List Trusted CA Certs
+```keytool -list -v -keystore $JAVA_HOME/jre/lib/security/cacerts```
+
+Import New CA into Trusted Certs
+```keytool -import -trustcacerts -file /path/to/ca/ca.pem -alias CA_ALIAS -keystore $JAVA_HOME/jre/lib/security/cacerts```
 
 **Find process names and PIDs which are using your swap memory via the proc FS**
 
